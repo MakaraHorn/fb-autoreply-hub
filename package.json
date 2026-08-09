@@ -1,0 +1,16 @@
+{
+  "name": "fb-autoreply-hub",
+  "version": "1.0.0",
+  "description": "Multi-user Facebook Page comment auto-reply platform with web dashboard",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
+}

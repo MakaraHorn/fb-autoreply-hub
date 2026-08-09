@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FB AutoReply Hub — ការិយាល័យបញ្ជា</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@500;700&family=Noto+Sans+Khmer:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">ការិយាល័យបញ្ជា</span>
+      </div>
+      <p class="login-sub">FB AutoReply Hub — សម្រាប់អាជីវកម្មច្រើន</p>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-tab="login">ចូលប្រើប្រាស់</button>
+        <button type="button" class="auth-tab" data-tab="signup">បង្កើតគណនីថ្មី</button>
+      </div>
+
+      <form id="email-login-form" class="auth-form active" data-panel="login">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="you@example.com" required />
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="••••••••" required />
+        <button type="submit">ចូលប្រើប្រាស់</button>
+        <p id="email-login-error" class="error-text"></p>
+      </form>
+
+      <form id="email-signup-form" class="auth-form" data-panel="signup">
+        <label for="signup-name">ឈ្មោះ</label>
+        <input type="text" id="signup-name" placeholder="ឈ្មោះរបស់អ្នក" />
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" placeholder="you@example.com" required />
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="យ៉ាងតិច 6 តួអក្សរ" required minlength="6" />
+        <button type="submit">បង្កើតគណនី</button>
+        <p id="email-signup-error" class="error-text"></p>
+      </form>
+
+      <div class="auth-divider"><span>ឬ</span></div>
+
+      <button id="social-login-fb" class="social-btn fb-btn">ចូលដោយ Facebook</button>
+      <button id="social-login-google" class="social-btn google-btn">ចូលដោយ Google</button>
+
+      <details class="admin-login-toggle">
+        <summary>សម្រាប់ម្ចាស់ Bot (Super Admin)</summary>
+        <form id="login-form">
+          <label for="password">ពាក្យសម្ងាត់ Admin</label>
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+          <button type="submit">ចូលជា Super Admin</button>
+          <p id="login-error" class="error-text"></p>
+        </form>
+      </details>
+    </div>
+  </div>
+
+  <!-- ================= APP ================= -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot" id="status-dot"></span>
+        <span class="brand-name">ការិយាល័យបញ្ជា</span>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="overview">
+          <span class="nav-num">01</span> ទិដ្ឋភាពទូទៅ
+        </button>
+        <button class="nav-item" data-view="keywords">
+          <span class="nav-num">02</span> ពាក្យគន្លឹះ
+        </button>
+        <button class="nav-item" data-view="activity">
+          <span class="nav-num">03</span> សកម្មភាព
+        </button>
+        <button class="nav-item" data-view="settings">
+          <span class="nav-num">04</span> ការកំណត់
+        </button>
+      </nav>
+
+      <button id="logout-btn" class="logout-btn">ចាកចេញ</button>
+      <div id="current-user-info" class="current-user-info"></div>
+    </aside>
+
+    <main class="main">
+
+      <!-- ---------- OVERVIEW ---------- -->
+      <section class="view active" id="view-overview">
+        <header class="view-header">
+          <h1>ទិដ្ឋភាពទូទៅ</h1>
+          <p class="view-sub">ស្ថានភាព Bot របស់អ្នកឥឡូវនេះ</p>
+        </header>
+
+        <div class="card-grid">
+          <div class="stat-card">
+            <span class="stat-label">ស្ថានភាព Server</span>
+            <span class="stat-value" id="stat-server">កំពុងពិនិត្យ...</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">ចំនួន Page ភ្ជាប់</span>
+            <span class="stat-value" id="stat-page-count">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Comment ដំណើរការសរុប</span>
+            <span class="stat-value" id="stat-count">0</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Page ដែលបានភ្ជាប់</h2>
+          <div id="overview-pages-list" class="pages-list"></div>
+        </div>
+
+        <div class="panel">
+          <h2>សកម្មភាពថ្មីៗបំផុត</h2>
+          <div id="overview-last-activity" class="empty-state">មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</div>
+        </div>
+      </section>
+
+      <!-- ---------- KEYWORDS ---------- -->
+      <section class="view" id="view-keywords">
+        <header class="view-header">
+          <h1>ពាក្យគន្លឹះ</h1>
+          <p class="view-sub">Page នីមួយៗមានសំណុំពាក្យគន្លឹះផ្ទាល់ខ្លួន — ជ្រើសរើស Page ខាងក្រោមជាមុនសិន</p>
+        </header>
+
+        <div class="panel">
+          <label for="keyword-page-select" class="hint" style="display:block;margin-bottom:8px;">កំពុងកែសម្រួលសម្រាប់ Page៖</label>
+          <select id="keyword-page-select" class="page-select"></select>
+        </div>
+
+        <div id="keywords-content">
+          <div class="panel">
+            <h2>បន្ថែមពាក្យគន្លឹះថ្មី</h2>
+            <form id="keyword-form" class="keyword-form">
+              <input type="text" id="kw-key" placeholder="ពាក្យគន្លឹះ (ឧ. តម្លៃ)" required />
+              <textarea id="kw-value" placeholder="សារឆ្លើយតប" rows="2" required></textarea>
+              <button type="submit">រក្សាទុក</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h2>បញ្ជីពាក្យគន្លឹះ</h2>
+            <div id="keyword-list" class="keyword-list"></div>
+          </div>
+        </div>
+
+        <div id="keywords-empty-state" class="panel hidden">
+          <div class="empty-state">សូមភ្ជាប់ Page យ៉ាងហោចណាស់មួយជាមុនសិន (ចូល Tab "ការកំណត់")</div>
+        </div>
+      </section>
+
+      <!-- ---------- ACTIVITY ---------- -->
+      <section class="view" id="view-activity">
+        <header class="view-header">
+          <h1>សកម្មភាព</h1>
+          <p class="view-sub">កំណត់ត្រា Comment និងចម្លើយថ្មីៗ ពីគ្រប់ Page (Refresh ស្វ័យប្រវត្តិ)</p>
+        </header>
+
+        <div class="panel">
+          <div id="activity-feed" class="activity-feed">
+            <div class="empty-state">មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- SETTINGS ---------- -->
+      <section class="view" id="view-settings">
+        <header class="view-header">
+          <h1>ការកំណត់</h1>
+          <p class="view-sub">គ្រប់គ្រង Page ដែលភ្ជាប់ជាមួយ Bot</p>
+        </header>
+
+        <div class="panel">
+          <h2>Page ដែលបានភ្ជាប់</h2>
+          <div id="pages-list" class="pages-manage-list"></div>
+        </div>
+
+        <div class="panel" id="fb-login-panel">
+          <h2>ភ្ជាប់ Page ថ្មី ដោយផ្ទាល់</h2>
+          <p class="hint">ចូល Facebook ជា Admin ម្តងគត់ — អាចជ្រើសយក Page ច្រើនក្នុងពេលតែមួយ ដោយមិនចាំបាច់ចម្លង Token ពី Graph API Explorer ទៀត។</p>
+          <button id="fb-login-btn" class="fb-login-btn">ចូល Facebook ជា Admin</button>
+          <p id="fb-login-msg" class="hint"></p>
+        </div>
+
+        <div class="panel">
+          <h2>បន្ថែម Page ដោយប្រើ Token ដោយដៃ (មធ្យោបាយចាស់)</h2>
+          <form id="manual-page-form" class="settings-form">
+            <input type="text" id="manual-page-token" placeholder="បិទភ្ជាប់ Page Access Token នៅទីនេះ" />
+            <button type="submit">បន្ថែម Page</button>
+          </form>
+          <p id="manual-page-msg" class="hint"></p>
+        </div>
+
+        <div class="panel">
+          <h2>Verify Token (Webhook)</h2>
+          <p class="hint">តម្លៃនេះត្រូវដូចគ្នាបេះបិទនឹងអ្វីដែលអ្នកដាក់ក្នុង Facebook Webhook Settings (ប្រើរួមគ្នាសម្រាប់ Page ទាំងអស់)</p>
+          <code id="verify-token-display">—</code>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
