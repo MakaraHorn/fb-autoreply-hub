@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const {
   PORT = 3000,
   ADMIN_PASSWORD = "changeme",
+  ADMIN_EMAIL = "admin@hub.local",
   FB_APP_ID = "",
   FB_APP_SECRET = "",
   GOOGLE_CLIENT_ID = "",
@@ -36,8 +37,9 @@ const GRAPH_VERSION = "v20.0";
 
 // ---------------------------------------------------------------
 // Session-based auth, now backing multiple dashboard users:
-// - The bot owner logs in with ADMIN_PASSWORD and sees every Page
-//   (isSuperAdmin = true, userId = SUPER_ADMIN_ID).
+// - The bot owner logs in through the SAME email/password form as
+//   everyone else, using ADMIN_EMAIL + ADMIN_PASSWORD (isSuperAdmin
+//   = true, userId = SUPER_ADMIN_ID, sees every connected Page).
 // - Everyone else signs up with email/password, or logs in with
 //   Facebook/Google, and only ever sees Pages they personally connected.
 // Each session can also hold short-lived OAuth state used only
@@ -83,30 +85,24 @@ function ensureSession(req, res, next) {
 
 app.get("/api/me", requireAuth, (req, res) => {
   if (req.isSuperAdmin) {
-    return res.json({ userId: req.userId, name: "Super Admin", email: null, isSuperAdmin: true });
+    return res.json({ userId: req.userId, name: "Super Admin", email: ADMIN_EMAIL, isSuperAdmin: true });
   }
   const user = store.getUserById(req.userId);
   if (!user) return res.status(401).json({ error: "unauthorized" });
   res.json({ userId: user.userId, name: user.name, email: user.email, isSuperAdmin: false });
 });
 
-// ---- Super Admin login (bot owner, sees every connected Page) ----
-app.post("/api/login", (req, res) => {
-  const { password } = req.body || {};
-  if (password && password === ADMIN_PASSWORD) {
-    const token = crypto.randomBytes(24).toString("hex");
-    sessions.set(token, { userId: store.SUPER_ADMIN_ID, isSuperAdmin: true });
-    setSessionCookie(res, token);
-    return res.json({ ok: true });
-  }
-  return res.status(401).json({ error: "ពាក្យសម្ងាត់មិនត្រឹមត្រូវ" });
-});
-
-// ---- Email/Password signup & login (business owners) ----
+// ---- Email/Password signup & login — ONE form for everyone. ----
+// If the email+password match ADMIN_EMAIL/ADMIN_PASSWORD, the person
+// signing in is recognized as the bot owner (Super Admin) automatically —
+// there's no separate admin login screen to find or remember.
 app.post("/api/auth/signup", (req, res) => {
   const { name, email, password } = req.body || {};
   if (!email || !password || password.length < 6) {
     return res.status(400).json({ error: "សូមបំពេញ Email និង Password (យ៉ាងតិច 6 តួអក្សរ)" });
+  }
+  if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+    return res.status(400).json({ error: "Email នេះជា Email សម្រាប់ Super Admin រួចហើយ សូម Login ជំនួសវិញ" });
   }
   if (store.findUserByEmail(email)) {
     return res.status(400).json({ error: "Email នេះមានគណនីរួចហើយ សូម Login ជំនួសវិញ" });
@@ -120,6 +116,14 @@ app.post("/api/auth/signup", (req, res) => {
 
 app.post("/api/auth/login", (req, res) => {
   const { email, password } = req.body || {};
+
+  if (email && email.toLowerCase() === ADMIN_EMAIL.toLowerCase() && password === ADMIN_PASSWORD) {
+    const token = crypto.randomBytes(24).toString("hex");
+    sessions.set(token, { userId: store.SUPER_ADMIN_ID, isSuperAdmin: true });
+    setSessionCookie(res, token);
+    return res.json({ ok: true });
+  }
+
   const user = email ? store.findUserByEmail(email) : null;
   if (!user || !store.verifyPassword(password || "", user.passwordHash)) {
     return res.status(401).json({ error: "Email ឬ Password មិនត្រឹមត្រូវ" });

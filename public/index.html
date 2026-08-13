@@ -2,213 +2,233 @@
 <html lang="km">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FB AutoReply Hub — ការិយាល័យបញ្ជា</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>FB AutoReply Hub</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%232F3E75'/%3E%3Cpath d='M10 13a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H17l-5 4v-4h-2a3 3 0 0 1-3-3v-9z' fill='white'/%3E%3Ccircle cx='27' cy='11' r='4.5' fill='%23E4A63A'/%3E%3Cpath d='M25.3 11l1.2 1.2 2.2-2.4' stroke='%231F2B54' stroke-width='1.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@500;700&family=Noto+Sans+Khmer:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@500;600;700&family=Noto+Sans+Khmer:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
-  <!-- ================= LOGIN ================= -->
-  <div id="login-screen" class="login-screen">
-    <div class="login-card">
-      <div class="brand" style="margin-bottom: 6px;">
-        <span class="brand-dot online"></span>
-        <span class="brand-name">ការិយាល័យបញ្ជា</span>
+<!-- ================= LOGIN ================= -->
+<div id="login-screen" class="login-screen">
+
+  <div class="login-brand-panel">
+    <div>
+      <div class="brand-row">
+        <svg class="logo-mark" viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="white" fill-opacity="0.12"/><path d="M10 13a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H17l-5 4v-4h-2a3 3 0 0 1-3-3v-9z" fill="white"/><circle cx="27" cy="11" r="4.5" fill="#E4A63A"/><path d="M25.3 11l1.2 1.2 2.2-2.4" stroke="#1F2B54" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <div class="brand-wordmark">FB AutoReply Hub</div>
+          <div class="brand-tagline-top">multi-page · multi-user</div>
+        </div>
       </div>
-      <p class="login-sub">ប្រព័ន្ធគ្រប់គ្រងការឆ្លើយតបអັດដេនូម៉ាតិក</p>
+
+      <div class="hero-copy">
+        <h1>ឆ្លើយតប Comment រាប់រយ ក្នុងពេលតែមួយ ដោយស្វ័យប្រវត្តិ</h1>
+        <p>ភ្ជាប់ Facebook Page ច្រើនក្នុងគណនីតែមួយ កំណត់ពាក្យគន្លឹះផ្ទាល់ខ្លួនសម្រាប់ Page នីមួយៗ ហើយអោយ Bot ដោះស្រាយសំណួរអតិថិជនជំនួសអ្នក។</p>
+      </div>
+
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div class="flow-step-label">Comment ចូលមក</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l10 10a1 1 0 0 1 0 1.4l-6.6 6.6a1 1 0 0 1-1.4 0L3 11z"/><circle cx="7.5" cy="7.5" r="1"/></svg></div>
+          <div class="flow-step-label">ផ្គូផ្គងពាក្យគន្លឹះ</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+          <div class="flow-step-label">ឆ្លើយតបស្វ័យប្រវត្តិ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg> ទិន្នន័យ Page ញែកគ្នាដាច់ស្រឡះ</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> គាំទ្រ Page ច្រើនក្នុងគណនីតែមួយ</div>
+    </div>
+  </div>
+
+  <div class="login-form-panel">
+    <div class="login-card">
+      <div class="login-card-head">
+        <h2>ចាប់ផ្តើមប្រើប្រាស់</h2>
+        <p>គ្រប់គ្រង Comment របស់ Page អ្នកក្នុងទីតែមួយ — ម្ចាស់ Bot ក៏ចូលទីនេះដដែល</p>
+      </div>
 
       <div class="auth-tabs">
         <button type="button" class="auth-tab active" data-tab="login">ចូលប្រើប្រាស់</button>
-        <button type="button" class="auth-tab" data-tab="signup">បង្កើតគណនី</button>
+        <button type="button" class="auth-tab" data-tab="signup">បង្កើតគណនីថ្មី</button>
       </div>
 
       <form id="email-login-form" class="auth-form active" data-panel="login">
-        <label for="login-email">អ៊ីមែល (Email)</label>
-        <input type="email" id="login-email" placeholder="you@example.com" required />
-        <label for="login-password">ពាក្យសម្ងាត់ (Password)</label>
-        <input type="password" id="login-password" placeholder="••••••••" required />
-        <button type="submit">ចូលប្រើប្រាស់</button>
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg> Email</label>
+          <input type="email" id="login-email" placeholder="you@example.com" required />
+        </div>
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary">ចូលប្រើប្រាស់ <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p id="email-login-error" class="error-text"></p>
       </form>
 
       <form id="email-signup-form" class="auth-form" data-panel="signup">
-        <label for="signup-name">ឈ្មោះពេញ</label>
-        <input type="text" id="signup-name" placeholder="ឈ្មោះរបស់អ្នក" />
-        <label for="signup-email">អ៊ីមែល (Email)</label>
-        <input type="email" id="signup-email" placeholder="you@example.com" required />
-        <label for="signup-password">ពាក្យសម្ងាត់ (Password)</label>
-        <input type="password" id="signup-password" placeholder="យ៉ាងតិច 6 តួអក្សរ" required minlength="6" />
-        <button type="submit">ចុះឈ្មោះគណនី</button>
+        <div class="input-group">
+          <label>ឈ្មោះ</label>
+          <input type="text" id="signup-name" placeholder="ឈ្មោះរបស់អ្នក" />
+        </div>
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg> Email</label>
+          <input type="email" id="signup-email" placeholder="you@example.com" required />
+        </div>
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Password</label>
+          <input type="password" id="signup-password" placeholder="យ៉ាងតិច 6 តួអក្សរ" required minlength="6" />
+        </div>
+        <button type="submit" class="btn-primary">បង្កើតគណនី <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p id="email-signup-error" class="error-text"></p>
       </form>
 
-      <div class="auth-divider"><span>ឬតភ្ជាប់ជាមួយ</span></div>
+      <div class="auth-divider"><span>ឬ</span></div>
 
-      <button id="social-login-fb" class="social-btn fb-btn">ចូលដោយ Facebook</button>
-      <button id="social-login-google" class="social-btn google-btn">ចូលដោយ Google</button>
+      <button id="social-login-fb" class="social-btn">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M15.5 8.5h-2c-.3 0-.5.2-.5.5v2h2.4l-.3 2.5H13v6.5h-2.5V13h-1.5v-2.5h1.5V9.2c0-1.7 1-2.7 2.6-2.7h2v2z" fill="#fff"/></svg></span>
+        ចូលដោយ Facebook
+      </button>
+      <button id="social-login-google" class="social-btn">
+        <span class="icon-badge"><svg viewBox="0 0 48 48" width="20" height="20"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.5 5.5 29.5 3.5 24 3.5 12.7 3.5 3.5 12.7 3.5 24S12.7 44.5 24 44.5 44.5 35.3 44.5 24c0-1.2-.1-2.4-.3-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.5 5.5 29.5 3.5 24 3.5c-7.4 0-13.7 4.2-17 10.4z"/><path fill="#4CAF50" d="M24 44.5c5.4 0 10.3-1.9 14-5.1l-6.5-5.5C29.5 35.5 26.9 36.5 24 36.5c-5.3 0-9.7-3.4-11.3-8.1l-6.5 5C9.9 40.1 16.4 44.5 24 44.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.5 5.5C40.9 36.3 44.5 30.6 44.5 24c0-1.2-.1-2.4-.9-3.5z"/></svg></span>
+        ចូលដោយ Google
+      </button>
 
-      <details class="admin-login-toggle">
-        <summary>សម្រាប់អ្នកគ្រប់គ្រងប្រព័ន្ធ (Super Admin)</summary>
-        <form id="login-form">
-          <label for="password">ពាក្យសម្ងាត់ Admin</label>
-          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
-          <button type="submit">ចូលជា Super Admin</button>
-          <p id="login-error" class="error-text"></p>
-        </form>
-      </details>
+      <p class="hint" style="margin-top:16px;text-align:center;">ម្ចាស់ Bot (Super Admin) ចូលដោយ Email + Password ខាងលើដដែល — ប្រព័ន្ធស្គាល់ស្វ័យប្រវត្តិ</p>
     </div>
   </div>
+</div>
 
-  <!-- ================= APP ================= -->
-  <div id="app" class="app hidden">
-    <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-dot" id="status-dot"></span>
-        <span class="brand-name">ការិយាល័យបញ្ជា</span>
+<!-- ================= APP ================= -->
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <svg class="logo-mark" viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#2F3E75"/><path d="M10 13a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H17l-5 4v-4h-2a3 3 0 0 1-3-3v-9z" fill="white"/><circle cx="27" cy="11" r="4.5" fill="#E4A63A"/><path d="M25.3 11l1.2 1.2 2.2-2.4" stroke="#1F2B54" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="sidebar-brand-name">AutoReply Hub</span>
+    </div>
+    <div class="sidebar-status"><span class="status-dot" id="status-dot"></span> <span id="status-dot-label">SERVER ONLINE</span></div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-view="overview"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> ទិដ្ឋភាពទូទៅ</button>
+      <button class="nav-item" data-view="keywords"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l10 10a1 1 0 0 1 0 1.4l-6.6 6.6a1 1 0 0 1-1.4 0L3 11z"/><circle cx="7.5" cy="7.5" r="1"/></svg> ពាក្យគន្លឹះ</button>
+      <button class="nav-item" data-view="activity"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 2-7h8"/></svg> សកម្មភាព</button>
+      <button class="nav-item" data-view="settings"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg> ការកំណត់</button>
+    </nav>
+
+    <button id="logout-btn" class="logout-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg> ចាកចេញ</button>
+    <div id="current-user-info" class="current-user-info"></div>
+  </aside>
+
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <section class="view active" id="view-overview">
+      <header class="view-header">
+        <div class="view-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <div><h1>ទិដ្ឋភាពទូទៅ</h1><p class="view-sub">ស្ថានភាព Bot របស់អ្នកឥឡូវនេះ</p></div>
+      </header>
+      <div class="card-grid">
+        <div class="stat-card"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><span class="stat-label">ស្ថានភាព Server</span><span class="stat-value" id="stat-server">កំពុងពិនិត្យ...</span></div></div>
+        <div class="stat-card"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><div><span class="stat-label">ចំនួន Page ភ្ជាប់</span><span class="stat-value" id="stat-page-count">0</span></div></div>
+        <div class="stat-card"><div class="stat-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 2-7h8"/></svg></div><div><span class="stat-label">Comment ដំណើរការសរុប</span><span class="stat-value" id="stat-count">0</span></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><h2>Page ដែលបានភ្ជាប់</h2></div>
+        <div id="overview-pages-list" class="pages-list"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 2-7h8"/></svg><h2>សកម្មភាពថ្មីៗបំផុត</h2></div>
+        <div id="overview-last-activity" class="empty-state"></div>
+      </div>
+    </section>
+
+    <!-- KEYWORDS -->
+    <section class="view" id="view-keywords">
+      <header class="view-header">
+        <div class="view-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l10 10a1 1 0 0 1 0 1.4l-6.6 6.6a1 1 0 0 1-1.4 0L3 11z"/><circle cx="7.5" cy="7.5" r="1"/></svg></div>
+        <div><h1>ពាក្យគន្លឹះ</h1><p class="view-sub">Page នីមួយៗមានពាក្យគន្លឹះផ្ទាល់ខ្លួន — ជ្រើសរើស Page ខាងក្រោមជាមុនសិន</p></div>
+      </header>
+      <div class="panel">
+        <label for="keyword-page-select" class="hint" style="display:block;margin-bottom:8px;font-weight:600;">កំពុងកែសម្រួលសម្រាប់ Page៖</label>
+        <select id="keyword-page-select" class="page-select"></select>
+      </div>
+      <div id="keywords-content">
+        <div class="panel">
+          <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><h2>បន្ថែមពាក្យគន្លឹះថ្មី</h2></div>
+          <form id="keyword-form" class="keyword-form">
+            <input type="text" id="kw-key" placeholder="ពាក្យគន្លឹះ (ឧ. តម្លៃ)" required />
+            <textarea id="kw-value" placeholder="សារឆ្លើយតប" rows="2" required></textarea>
+            <button type="submit" class="btn-amber"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> រក្សាទុក</button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l10 10a1 1 0 0 1 0 1.4l-6.6 6.6a1 1 0 0 1-1.4 0L3 11z"/><circle cx="7.5" cy="7.5" r="1"/></svg><h2>បញ្ជីពាក្យគន្លឹះ</h2></div>
+          <div id="keyword-list" class="keyword-list"></div>
+        </div>
+      </div>
+      <div id="keywords-empty-state" class="panel hidden"></div>
+    </section>
+
+    <!-- ACTIVITY -->
+    <section class="view" id="view-activity">
+      <header class="view-header">
+        <div class="view-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-7 4 14 2-7h8"/></svg></div>
+        <div><h1>សកម្មភាព</h1><p class="view-sub">កំណត់ត្រា Comment និងចម្លើយថ្មីៗ ពីគ្រប់ Page (Refresh ស្វ័យប្រវត្តិ)</p></div>
+      </header>
+      <div class="panel"><div id="activity-feed" class="activity-feed"></div></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings">
+      <header class="view-header">
+        <div class="view-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <div><h1>ការកំណត់</h1><p class="view-sub">គ្រប់គ្រង Page ដែលភ្ជាប់ជាមួយ Bot</p></div>
+      </header>
+
+      <div class="panel">
+        <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><h2>Page ដែលបានភ្ជាប់</h2></div>
+        <div id="pages-list" class="pages-manage-list"></div>
       </div>
 
-      <nav class="nav">
-        <button class="nav-item active" data-view="overview">
-          <span class="nav-num">01</span> ទិដ្ឋភាពទូទៅ
-        </button>
-        <button class="nav-item" data-view="keywords">
-          <span class="nav-num">02</span> ពាក្យគន្លឹះ
-        </button>
-        <button class="nav-item" data-view="activity">
-          <span class="nav-num">03</span> សកម្មភាព
-        </button>
-        <button class="nav-item" data-view="settings">
-          <span class="nav-num">04</span> ការកំណត់
-        </button>
-      </nav>
+      <div class="panel" id="fb-login-panel">
+        <div class="panel-head"><span class="icon-badge" style="width:22px;height:22px;display:inline-flex;"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M15.5 8.5h-2c-.3 0-.5.2-.5.5v2h2.4l-.3 2.5H13v6.5h-2.5V13h-1.5v-2.5h1.5V9.2c0-1.7 1-2.7 2.6-2.7h2v2z" fill="#fff"/></svg></span><h2>ភ្ជាប់ Page ថ្មី ដោយផ្ទាល់</h2></div>
+        <p class="hint">ចូល Facebook ជា Admin ម្តងគត់ — អាចជ្រើសយក Page ច្រើនក្នុងពេលតែមួយ ដោយមិនចាំបាច់ចម្លង Token ពី Graph API Explorer ទៀត។</p>
+        <button id="fb-login-btn" class="btn-amber"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> ចូល Facebook ជា Admin</button>
+        <p id="fb-login-msg" class="hint"></p>
+      </div>
 
-      <div id="current-user-info" class="current-user-info"></div>
-      <button id="logout-btn" class="logout-btn">ចាកចេញពីប្រព័ន្ធ</button>
-    </aside>
+      <div class="panel">
+        <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><h2>បន្ថែម Page ដោយប្រើ Token ដោយដៃ (មធ្យោបាយចាស់)</h2></div>
+        <form id="manual-page-form" class="settings-form" style="display:flex;gap:10px;">
+          <input type="text" id="manual-page-token" placeholder="បិទភ្ជាប់ Page Access Token នៅទីនេះ" style="flex:1;" />
+          <button type="submit" class="btn-amber"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> បន្ថែម</button>
+        </form>
+        <p id="manual-page-msg" class="hint"></p>
+      </div>
 
-    <main class="main">
+      <div class="panel">
+        <div class="panel-head"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><h2>Verify Token (Webhook)</h2></div>
+        <p class="hint">តម្លៃនេះត្រូវដូចគ្នាបេះបិទនឹងអ្វីដែលអ្នកដាក់ក្នុង Facebook Webhook Settings (ប្រើរួមគ្នាសម្រាប់ Page ទាំងអស់)</p>
+        <code id="verify-token-display" class="hint-code">—</code>
+      </div>
+    </section>
 
-      <!-- ---------- OVERVIEW ---------- -->
-      <section class="view active" id="view-overview">
-        <header class="view-header">
-          <h1>ទិដ្ឋភាពទូទៅ</h1>
-          <p class="view-sub">ស្ថានភាពដំណើរការប្រព័ន្ធ Bot របស់អ្នកនាពេលបច្ចុប្បន្ន</p>
-        </header>
+  </main>
+</div>
 
-        <div class="card-grid">
-          <div class="stat-card">
-            <span class="stat-label">ស្ថានភាព Server</span>
-            <span class="stat-value" id="stat-server">កំពុងពិនិត្យ...</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">ចំនួន Page បានភ្ជាប់</span>
-            <span class="stat-value" id="stat-page-count">0</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">Comment សរុបបានដំណើរការ</span>
-            <span class="stat-value" id="stat-count">0</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2>ទំព័រ Facebook (Pages) ដែលបានភ្ជាប់</h2>
-          <div id="overview-pages-list" class="pages-list"></div>
-        </div>
-
-        <div class="panel">
-          <h2>សកម្មភាពឆ្លើយតបចុងក្រោយ</h2>
-          <div id="overview-last-activity" class="empty-state">មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</div>
-        </div>
-      </section>
-
-      <!-- ---------- KEYWORDS ---------- -->
-      <section class="view" id="view-keywords">
-        <header class="view-header">
-          <h1>ពាក្យគន្លឹះ (Keywords)</h1>
-          <p class="view-sub">គ្រប់គ្រងសំណុំពាក្យគន្លឹះ និងសារឆ្លើយតបស្វ័យប្រវត្តិតาม Page នីមួយៗ</p>
-        </header>
-
-        <div class="panel">
-          <label for="keyword-page-select" class="hint" style="display:block;margin-bottom:8px;font-weight:500;color:var(--ink);">ជ្រើសរើស Page ដើម្បីកែសម្រួល៖</label>
-          <select id="keyword-page-select" class="page-select"></select>
-        </div>
-
-        <div id="keywords-content">
-          <div class="panel">
-            <h2>បន្ថែមពាក្យគន្លឹះថ្មី</h2>
-            <form id="keyword-form" class="keyword-form">
-              <input type="text" id="kw-key" placeholder="ពាក្យគន្លឹះ (ឧ. តម្លៃ, រកទិញឯណា)" required />
-              <textarea id="kw-value" placeholder="សារឆ្លើយតបត្រឡប់ទៅអតិថិជនវិញ..." rows="3" required></textarea>
-              <button type="submit">រក្សាទុកពាក្យគន្លឹះ</button>
-            </form>
-          </div>
-
-          <div class="panel">
-            <h2>បញ្ជីពាក្យគន្លឹះដែលមានស្រាប់</h2>
-            <div id="keyword-list" class="keyword-list"></div>
-          </div>
-        </div>
-
-        <div id="keywords-empty-state" class="panel hidden">
-          <div class="empty-state">សូមភ្ជាប់ Page យ៉ាងហោចណាស់មួយជាមុនសិន (ចូលទៅកាន់ផ្ទាំង "ការកំណត់")</div>
-        </div>
-      </section>
-
-      <!-- ---------- ACTIVITY ---------- -->
-      <section class="view" id="view-activity">
-        <header class="view-header">
-          <h1>កំណត់ត្រាសកម្មភាព</h1>
-          <p class="view-sub">ប្រវត្តិ Comment និងលទ្ធផលឆ្លើយតបពីគ្រប់ Page ទាំងអស់ (Refresh ស្វ័យប្រវត្តិ)</p>
-        </header>
-
-        <div class="panel">
-          <div id="activity-feed" class="activity-feed">
-            <div class="empty-state">មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ---------- SETTINGS ---------- -->
-      <section class="view" id="view-settings">
-        <header class="view-header">
-          <h1>ការកំណត់ប្រព័ន្ធ</h1>
-          <p class="view-sub">គ្រប់គ្រងការតភ្ជាប់ទំព័រ Facebook និងការកំណត់ផ្សេងៗ</p>
-        </header>
-
-        <div class="panel">
-          <h2>ទំព័រ Facebook ដែលបានតភ្ជាប់</h2>
-          <div id="pages-list" class="pages-manage-list"></div>
-        </div>
-
-        <div class="panel" id="fb-login-panel">
-          <h2>ភ្ជាប់ Page ថ្មីជាមួយ Facebook</h2>
-          <p class="hint">ចូលគណនី Facebook របស់អ្នកដើម្បីជ្រើសរើស Page បន្ថែមដោយស្វ័យប្រវត្តិ ដោយមិនចាំបាច់ប្រើ Token ដៃ។</p>
-          <button id="fb-login-btn" class="fb-login-btn">ចូល Facebook ជា Admin</button>
-          <p id="fb-login-msg" class="hint" style="margin-top:12px;"></p>
-        </div>
-
-        <div class="panel">
-          <h2>បន្ថែម Page ដោយប្រើ Access Token ដោយផ្ទាល់</h2>
-          <form id="manual-page-form" class="settings-form">
-            <input type="text" id="manual-page-token" placeholder="បិទភ្ជាប់ Page Access Token នៅទីនេះ..." />
-            <button type="submit">បន្ថែម Page</button>
-          </form>
-          <p id="manual-page-msg" class="hint" style="margin-top:12px;"></p>
-        </div>
-
-        <div class="panel">
-          <h2>Webhook Verify Token</h2>
-          <p class="hint">តម្លៃនេះត្រូវដាក់ដូចគ្នាបេះបិទក្នុង Facebook Developer Dashboard សម្រាប់ Webhook របស់អ្នក៖</p>
-          <code id="verify-token-display">—</code>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <script src="/app.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>

@@ -3,6 +3,25 @@ const appEl = document.getElementById("app");
 
 let selectedKeywordPageId = null;
 
+const ICON_EMPTY_INBOX = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>';
+const ICON_EMPTY_PAGES = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
+const TRASH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>';
+const BADGE_ICONS = {
+  sent: '<svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>',
+  failed: '<svg viewBox="0 0 24 24" fill="none" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  skipped: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>',
+};
+const ICON_SHIELD = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>';
+
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+function initials(name) {
+  return (name || "?").trim().slice(0, 1).toUpperCase();
+}
+
 async function api(path, options = {}) {
   const res = await fetch(path, {
     headers: { "Content-Type": "application/json" },
@@ -26,6 +45,9 @@ document.querySelectorAll(".auth-tab").forEach((tab) => {
 });
 
 // ---------------- Auth: email login/signup ----------------
+// Note: there's just ONE login form for everyone. If the email+password
+// entered match the Super Admin's credentials, the server recognizes that
+// automatically — no separate admin screen to find.
 
 document.getElementById("email-login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -65,22 +87,6 @@ document.getElementById("social-login-google").addEventListener("click", () => {
   window.location.href = "/auth/google/login";
 });
 
-// ---------------- Auth: super admin (legacy password) ----------------
-
-document.getElementById("login-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const loginError = document.getElementById("login-error");
-  loginError.textContent = "";
-  const password = document.getElementById("password").value;
-  try {
-    const data = await api("/api/login", { method: "POST", body: JSON.stringify({ password }) });
-    if (data.ok) showApp();
-    else loginError.textContent = data.error || "ពាក្យសម្ងាត់មិនត្រឹមត្រូវ";
-  } catch (err) {
-    loginError.textContent = "ពាក្យសម្ងាត់មិនត្រឹមត្រូវ";
-  }
-});
-
 document.getElementById("logout-btn").addEventListener("click", async () => {
   await api("/api/logout", { method: "POST" });
   appEl.classList.add("hidden");
@@ -98,11 +104,11 @@ async function loadCurrentUserInfo() {
     const me = await api("/api/me");
     const el = document.getElementById("current-user-info");
     if (me.isSuperAdmin) {
-      el.innerHTML = `<span class="user-badge super">Super Admin</span>`;
+      el.innerHTML = `<div class="user-avatar">${ICON_SHIELD}</div><div><span class="user-badge">${ICON_SHIELD} Super Admin</span></div>`;
     } else {
-      el.innerHTML = `<div class="user-name">${escapeHtml(me.name || "")}</div>${
+      el.innerHTML = `<div class="user-avatar">${initials(me.name)}</div><div><div class="user-name">${escapeHtml(me.name || "")}</div>${
         me.email ? `<div class="user-email">${escapeHtml(me.email)}</div>` : ""
-      }`;
+      }</div>`;
     }
   } catch (err) {
     // ignore
@@ -145,23 +151,23 @@ async function loadOverview() {
   try {
     const data = await api("/api/status");
     document.getElementById("status-dot").classList.add("online");
-    document.getElementById("stat-server").textContent = "កំពុងដំណើរការ ✅";
+    document.getElementById("stat-server").textContent = "កំពុងដំណើរការ";
     document.getElementById("stat-page-count").textContent = data.pageCount;
     document.getElementById("stat-count").textContent = data.recentActivityCount;
 
     const pagesListEl = document.getElementById("overview-pages-list");
     if (data.pages.length === 0) {
-      pagesListEl.innerHTML = `<div class="empty-state">មិនទាន់មាន Page ណាមួយត្រូវបានភ្ជាប់ទេ — ចូល Tab "ការកំណត់"</div>`;
+      pagesListEl.innerHTML = `<div class="empty-state">${ICON_EMPTY_PAGES}<span>មិនទាន់មាន Page ណាមួយត្រូវបានភ្ជាប់ទេ — ចូល Tab "ការកំណត់"</span></div>`;
     } else {
       pagesListEl.innerHTML = data.pages
-        .map((p) => `<div class="page-chip">${escapeHtml(p.pageName)}</div>`)
+        .map((p) => `<div class="page-chip"><span class="page-chip-dot"></span>${escapeHtml(p.pageName)}</div>`)
         .join("");
     }
 
     const lastActivityEl = document.getElementById("overview-last-activity");
-    if (data.lastActivity) {
-      lastActivityEl.innerHTML = renderActivityItem(data.lastActivity);
-    }
+    lastActivityEl.innerHTML = data.lastActivity
+      ? renderActivityItem(data.lastActivity)
+      : `<div class="empty-state">${ICON_EMPTY_INBOX}<span>មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</span></div>`;
   } catch (err) {
     // session may have expired mid-session; ignore
   }
@@ -178,6 +184,7 @@ async function loadKeywordPageOptions() {
   if (pages.length === 0) {
     content.classList.add("hidden");
     emptyState.classList.remove("hidden");
+    emptyState.innerHTML = `<div class="empty-state">${ICON_EMPTY_PAGES}<span>សូមភ្ជាប់ Page យ៉ាងហោចណាស់មួយជាមុនសិន (ចូល Tab "ការកំណត់")</span></div>`;
     select.innerHTML = "";
     return;
   }
@@ -227,7 +234,7 @@ async function loadKeywords(pageId) {
     item.innerHTML = `
       <span class="keyword-key ${key === "default" ? "default" : ""}">${escapeHtml(key)}</span>
       <span class="keyword-value">${escapeHtml(value)}</span>
-      ${key !== "default" ? `<button class="keyword-delete" data-key="${escapeHtml(key)}">លុប</button>` : ""}
+      ${key !== "default" ? `<button class="keyword-delete" data-key="${escapeHtml(key)}">${TRASH_ICON}</button>` : ""}
     `;
     listEl.appendChild(item);
   });
@@ -256,7 +263,7 @@ function renderActivityItem(entry) {
           ${escapeHtml(entry.commentText)}
         </div>
         <div class="activity-meta">
-          <span class="badge ${entry.status}">${badgeLabel}</span>
+          <span class="badge ${entry.status}">${BADGE_ICONS[entry.status] || ""} ${badgeLabel}</span>
           ${entry.matchedKeyword ? `<span>ពាក្យគន្លឹះ: ${escapeHtml(entry.matchedKeyword)}</span>` : ""}
         </div>
       </div>
@@ -267,11 +274,9 @@ function renderActivityItem(entry) {
 async function loadActivity() {
   const logs = await api("/api/logs");
   const feedEl = document.getElementById("activity-feed");
-  if (!logs.length) {
-    feedEl.innerHTML = `<div class="empty-state">មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</div>`;
-    return;
-  }
-  feedEl.innerHTML = logs.map(renderActivityItem).join("");
+  feedEl.innerHTML = logs.length
+    ? logs.map(renderActivityItem).join("")
+    : `<div class="empty-state">${ICON_EMPTY_INBOX}<span>មិនទាន់មាន Comment ណាមួយត្រូវបានដំណើរការទេ</span></div>`;
 }
 
 // ---------------- Settings: connected pages management ----------------
@@ -281,7 +286,7 @@ async function loadSettingsPages() {
   const listEl = document.getElementById("pages-list");
 
   if (pages.length === 0) {
-    listEl.innerHTML = `<div class="empty-state">មិនទាន់មាន Page ណាមួយត្រូវបានភ្ជាប់ទេ</div>`;
+    listEl.innerHTML = `<div class="empty-state">${ICON_EMPTY_PAGES}<span>មិនទាន់មាន Page ណាមួយត្រូវបានភ្ជាប់ទេ</span></div>`;
     return;
   }
 
@@ -289,19 +294,20 @@ async function loadSettingsPages() {
     .map(
       (p) => `
     <div class="page-manage-item" data-page-id="${p.pageId}">
+      <div class="page-manage-avatar">${initials(p.pageName)}</div>
       <div class="page-manage-info">
         <div class="page-manage-name">
           ${escapeHtml(p.pageName)}
-          ${p.tokenValid ? `<span class="badge sent">Token ត្រឹមត្រូវ</span>` : `<span class="badge failed">Token មានបញ្ហា</span>`}
+          ${p.tokenValid ? `<span class="badge sent">${BADGE_ICONS.sent} Token ត្រឹមត្រូវ</span>` : `<span class="badge failed">${BADGE_ICONS.failed} Token មានបញ្ហា</span>`}
         </div>
-        <div class="hint">Token: <code>${p.tokenMasked}</code></div>
+        <div class="hint" style="margin:0;">Token: <code class="hint-code">${p.tokenMasked}</code></div>
       </div>
-      <label class="toggle-row small">
+      <label class="toggle-row">
         <input type="checkbox" class="default-reply-toggle" data-page-id="${p.pageId}" ${p.defaultReplyEnabled ? "checked" : ""} />
         <span class="toggle-track"><span class="toggle-thumb"></span></span>
         <span class="toggle-label">ឆ្លើយតបលំនាំដើម</span>
       </label>
-      <button class="page-remove-btn" data-page-id="${p.pageId}">លុប Page</button>
+      <button class="page-remove-btn" data-page-id="${p.pageId}">${TRASH_ICON} លុប</button>
     </div>
   `
     )
@@ -386,14 +392,6 @@ document.getElementById("fb-login-btn").addEventListener("click", () => {
     else document.addEventListener("DOMContentLoaded", showMsg);
   }
 })();
-
-// ---------------- Helpers ----------------
-
-function escapeHtml(str) {
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML;
-}
 
 // Auto-refresh overview + activity every 8s while app is visible
 setInterval(() => {

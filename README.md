@@ -12,7 +12,8 @@ Platform សម្រាប់អាជីវកម្មច្រើនប្�
 - 🔵 **ចូលដោយ Facebook** (ភ្ជាប់ Page ស្វ័យប្រវត្តិក្នុងពេលតែមួយ)
 - 🔴 **ចូលដោយ Google** (ជាមធ្យោបាយ Login មួយបន្ថែម)
 - 👤 **អ្នកប្រើប្រាស់ម្នាក់ៗឃើញតែ Page ខ្លួនឯង** ដោយស្វ័យប្រវត្តិ — ទិន្នន័យញែកគ្នាទាំងស្រុង
-- 👑 **Super Admin** (ម្ចាស់ Bot) ឃើញ Page ទាំងអស់
+- 👑 **Super Admin** (ម្ចាស់ Bot) ឃើញ Page ទាំងអស់ — Login ក្នុង Form ដដែលនឹងអ្នកប្រើប្រាស់ធម្មតា (មិនមែនទំព័រដាច់ដោយឡែក)
+- 📱 **ប្រើបានលើ Computer និង ទូរស័ព្ទ** — Responsive ពេញលេញ
 - 📄 **Page នីមួយៗមានពាក្យគន្លឹះផ្ទាល់ខ្លួន** ដាច់ដោយឡែក
 - ✅ ការពារ Reply ស្ទួន និង Self-Reply Loop
 - 🔄 Page Subscription ស្វ័យប្រវត្តិពេលភ្ជាប់ Page ថ្មី
@@ -28,7 +29,7 @@ cp .env.example .env
 
 បើកឯកសារ `.env` រួចបំពេញ:
 - `VERIFY_TOKEN` — កំណត់ដោយខ្លួនឯង ត្រូវប្រើដូចគ្នាក្នុង Facebook Webhook Settings
-- `ADMIN_PASSWORD` — ពាក្យសម្ងាត់សម្រាប់ Super Admin (ខ្លួនអ្នក) ត្រូវប្តូរជាតម្លៃផ្ទាល់ខ្លួន
+- `ADMIN_EMAIL` / `ADMIN_PASSWORD` — Email + Password សម្រាប់ Super Admin (ខ្លួនអ្នក) ត្រូវប្តូរទាំងពីរជាតម្លៃផ្ទាល់ខ្លួន
 - `FB_APP_ID` / `FB_APP_SECRET` — ស្រេចចិត្ត សម្រាប់ Feature ចូល Facebook
 - `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` — ស្រេចចិត្ត សម្រាប់ Feature ចូល Google
 
@@ -114,7 +115,7 @@ GOOGLE_CLIENT_SECRET = <Client Secret>
 
 ### សម្រាប់អ្នក (Super Admin)
 
-ចុច **"សម្រាប់ម្ចាស់ Bot (Super Admin)"** ខាងក្រោមទំព័រ Login → វាយ `ADMIN_PASSWORD` → ឃើញ Page **ទាំងអស់** របស់អ្នកប្រើប្រាស់គ្រប់គ្នា
+**គ្មានទំព័រ Login ដាច់ដោយឡែកទៀតទេ** — ចូលទំព័រ Login ធម្មតា វាយ `ADMIN_EMAIL` និង `ADMIN_PASSWORD` ចូលក្នុងប្រអប់ Email/Password ដូចអ្នកប្រើប្រាស់ធម្មតា ចុច "ចូលប្រើប្រាស់" — ប្រព័ន្ធស្គាល់ស្វ័យប្រវត្តិថាអ្នកជា Super Admin ហើយបង្ហាញ Page **ទាំងអស់** របស់អ្នកប្រើប្រាស់គ្រប់គ្នា
 
 ---
 
